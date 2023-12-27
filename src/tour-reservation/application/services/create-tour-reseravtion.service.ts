@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { TourReservationFactory } from 'src/tour-reservation/domain/factories/tour-reservation.factory';
 import { TourReservation } from 'src/tour-reservation/domain/tour-reservation';
 import { CreateTourReservationCommand } from '../commands/create-tour-reservation.command';
 import { TourReservationRepositoryPort } from '../ports/tour-reservation.repository.port';
@@ -6,6 +7,7 @@ import { TourReservationRepositoryPort } from '../ports/tour-reservation.reposit
 @Injectable()
 export class CreateTourReservationService {
   constructor(
+    private readonly tourReservationFactory: TourReservationFactory,
     private readonly tourReservationRepositoryPort: TourReservationRepositoryPort,
   ) {}
 
@@ -19,7 +21,7 @@ export class CreateTourReservationService {
     const { tourId, userId } = command;
 
     // 1. Create new tour reservation
-    const tourReservation = TourReservation.create(tourId, userId);
+    const tourReservation = this.tourReservationFactory.create(tourId, userId);
 
     // 2. Save
     return this.tourReservationRepositoryPort.save(tourReservation);
