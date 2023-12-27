@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  db:
+    container_name: tour-db
+    image: mysql:8.2.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: local
+    ports:
+      - '3306:3306'
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: 'always'
+
+  # liquibase
+  liquibase:
+    image: liquibase/liquibase:4.23
+    container_name: tour-liquibase-container
+    volumes:
+      - ./migrations/liquibase/changelog:/liquibase/changelog
+    depends_on:
+      - db
+    command: --defaults-file=/liquibase/changelog/liquibase.properties update
+    restart: 'no'
+
+  redis:
+    image: redis:7.2.3
+    ports:
+      - 6379:6379
+    volumes:
+      - redis_data:/data
+    restart: 'always'
+
+volumes:
+  db_data:
+  redis_data:
