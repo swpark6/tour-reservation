@@ -7,5 +7,8 @@ export class TourReservation {
 
     // 사용자
     public userId: string,
+
+    // 여행 시작일
+    public startAt: Date,
   ) {}
 }

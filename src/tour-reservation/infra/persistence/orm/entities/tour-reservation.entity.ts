@@ -10,4 +10,7 @@ export class TourReservationEntity {
 
   @Column()
   userId: string;
+
+  @Column()
+  startAt: Date;
 }

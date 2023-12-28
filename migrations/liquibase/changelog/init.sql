@@ -2,8 +2,9 @@
 --changeset swpark:tour_reservation
 create table if not exists tour_reservations
 (
-    id     varchar(36) not null
+    id      varchar(36) not null
         primary key,
-    tourId varchar(36) not null,
-    userId varchar(36) not null
+    tourId  varchar(36) not null,
+    userId  varchar(36) not null,
+    startAt timestamp   not null
 );

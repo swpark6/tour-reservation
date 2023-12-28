@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsISO8601, IsNotEmpty, IsString } from 'class-validator';
 
 export class CreateTourReservationRequestDto {
   @ApiProperty({ example: '275f2933-72da-46b9-91a5-36ac27cef26d' })
@@ -11,4 +11,8 @@ export class CreateTourReservationRequestDto {
   @IsString()
   @IsNotEmpty()
   userId: string;
+
+  @ApiProperty({ example: '2023-12-28T12:34:56.789Z' })
+  @IsISO8601()
+  startAt: Date;
 }
