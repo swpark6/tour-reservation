@@ -3,6 +3,10 @@ import { TourReservationEntity } from '../entities/tour-reservation.entity';
 
 export class TourReservationMapper {
   static toDomain(entity: TourReservationEntity): TourReservation {
+    if (!entity) {
+      return null;
+    }
+
     const { id, tourId, userId, startAt, canceledAt } = entity;
 
     const domain = new TourReservation(id);
