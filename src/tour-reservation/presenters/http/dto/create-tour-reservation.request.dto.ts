@@ -13,6 +13,6 @@ export class CreateTourReservationRequestDto {
   userId: string;
 
   @ApiProperty({ example: '2023-12-28T12:34:56.789Z' })
-  @IsISO8601()
-  startAt: Date;
+  @IsISO8601({})
+  startAt: string;
 }

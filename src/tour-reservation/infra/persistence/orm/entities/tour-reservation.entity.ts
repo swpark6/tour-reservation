@@ -13,4 +13,7 @@ export class TourReservationEntity {
 
   @Column()
   startAt: Date;
+
+  @Column()
+  canceledAt: Date | null;
 }
