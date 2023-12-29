@@ -1,22 +1,23 @@
 import { CanNotCancelException } from './exceptions/can-not-cancel.exception';
 
 export class TourReservation {
-  // 투어
-  tourId: string;
+  public constructor(
+    public readonly id: string,
+    // 투어
+    public readonly tourId: string,
 
-  // 사용자
-  userId: string;
+    // 사용자
+    public readonly userId: string,
 
-  // 여행 시작일
-  startAt: Date;
+    // 여행 시작일
+    public readonly startAt: Date,
 
-  // 취소 마감일
-  cancellationDueDate: Date;
+    // 취소 마감일
+    public readonly cancellationDueDate: Date,
 
-  // 취소일
-  canceledAt: Date | null;
-
-  public constructor(public id: string) {}
+    // 취소일
+    public canceledAt: Date | null,
+  ) {}
 
   /**
    * 예약 취소

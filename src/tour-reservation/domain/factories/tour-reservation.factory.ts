@@ -10,21 +10,24 @@ export class TourReservationFactory {
   create(tourId: string, userId: string, startAt: string) {
     const tourReservationId = randomUUID();
 
-    const tourReservation = new TourReservation(tourReservationId);
+    const startAtDate = moment.parseZone(startAt).startOf('day').toDate();
 
-    tourReservation.tourId = tourId;
-    tourReservation.userId = userId;
-    tourReservation.startAt = moment.parseZone(startAt).startOf('day').toDate();
-
-    // 취소일
-    tourReservation.cancellationDueDate = new Date(
+    const cancellationDueDate = new Date(
       moment
         .parseZone(startAt)
         .subtract(TourReservationFactory.CANCELLATION_PERIOD - 1, 'day') // 시작일 N일전까지 취소가 가능하므로 취소 가능 마감일은 N-1
         .startOf('day')
         .format(),
     );
-    tourReservation.canceledAt = null;
+
+    const tourReservation = new TourReservation(
+      tourReservationId,
+      tourId,
+      userId,
+      startAtDate,
+      cancellationDueDate,
+      null,
+    );
 
     return tourReservation;
   }
