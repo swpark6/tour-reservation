@@ -17,9 +17,10 @@ create table if not exists tour_reservations
 --changeset swpark:tours
 create table if not exists tours
 (
-    id        varchar(36)                         not null
+    id              varchar(36)                         not null
         primary key,
-    holydays  varchar(255)                        null,
-    createdAt timestamp default CURRENT_TIMESTAMP not null,
-    updatedAt timestamp                           null
+    holydays        varchar(255)                        null,
+    holydaysOfWeek  varchar(255)                        null,
+    createdAt       timestamp default CURRENT_TIMESTAMP not null,
+    updatedAt       timestamp                           null
 );

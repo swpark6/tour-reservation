@@ -1,7 +1,9 @@
+import { HolydayOfWeekVo } from './valud-object/holyday-of-week.vo';
 import { HolydayVo } from './valud-object/holyday.vo';
 
 export class Tour {
   holidays: HolydayVo[] = new Array<HolydayVo>();
+  holydaysOfWeek: HolydayOfWeekVo[] = new Array<HolydayOfWeekVo>();
 
   constructor(public readonly id: string) {}
 
