@@ -2,7 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { EventBus } from '@nestjs/cqrs';
 import { TourHolydaysUpdatedEvent } from 'src/tour/domain/events/tour-holydays-updated.event';
 import { Tour } from 'src/tour/domain/tour';
-import { HolydayVo } from 'src/tour/domain/valud-object/holyday.vo';
+import { HolydayVo } from 'src/tour/domain/value-object/holyday.vo';
 import { SetHolydayCommand } from '../commands/set-holyday.command';
 import { TourRepositoryPort } from '../ports/tour.repository.port';
 

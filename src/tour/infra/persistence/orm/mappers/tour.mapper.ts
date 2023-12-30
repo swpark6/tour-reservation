@@ -1,6 +1,6 @@
 import { Tour } from 'src/tour/domain/tour';
-import { HolydayOfWeekVo } from 'src/tour/domain/valud-object/holyday-of-week.vo';
-import { HolydayVo } from 'src/tour/domain/valud-object/holyday.vo';
+import { HolydayOfWeekVo } from 'src/tour/domain/value-object/holyday-of-week.vo';
+import { HolydayVo } from 'src/tour/domain/value-object/holyday.vo';
 import { TourEntity } from '../entities/tour.entity';
 
 export class TourMapper {

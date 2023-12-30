@@ -1,5 +1,5 @@
-import { HolydayOfWeekVo } from './valud-object/holyday-of-week.vo';
-import { HolydayVo } from './valud-object/holyday.vo';
+import { HolydayOfWeekVo } from './value-object/holyday-of-week.vo';
+import { HolydayVo } from './value-object/holyday.vo';
 
 export class Tour {
   holidays: HolydayVo[] = new Array<HolydayVo>();
