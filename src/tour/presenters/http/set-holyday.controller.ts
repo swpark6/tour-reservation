@@ -29,10 +29,10 @@ export class SetHolydaysController {
     )
     dto: SetHolydaysRequestDto,
   ): Promise<Tour> {
-    const { holydays } = dto;
+    const { holydays, holydaysOfWeek } = dto;
 
     return this.setHolydaysService.setHolyday(
-      new SetHolydayCommand(tourId, holydays),
+      new SetHolydayCommand(tourId, holydays, holydaysOfWeek),
     );
   }
 }
