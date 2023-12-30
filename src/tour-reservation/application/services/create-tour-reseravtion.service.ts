@@ -1,4 +1,6 @@
 import { Injectable } from '@nestjs/common';
+import { EventBus } from '@nestjs/cqrs';
+import { TourReservationCreatedEvent } from 'src/tour-reservation/domain/evnets/tour-reservation-created.event';
 import { TourReservationFactory } from 'src/tour-reservation/domain/factories/tour-reservation.factory';
 import { TourReservation } from 'src/tour-reservation/domain/tour-reservation';
 import { CreateTourReservationCommand } from '../commands/create-tour-reservation.command';
@@ -9,6 +11,7 @@ export class CreateTourReservationService {
   constructor(
     private readonly tourReservationFactory: TourReservationFactory,
     private readonly tourReservationRepositoryPort: TourReservationRepositoryPort,
+    private readonly eventBus: EventBus,
   ) {}
 
   /**
@@ -28,6 +31,12 @@ export class CreateTourReservationService {
     );
 
     // 2. Save
-    return this.tourReservationRepositoryPort.save(tourReservation);
+    const newTourReservation =
+      await this.tourReservationRepositoryPort.save(tourReservation);
+
+    // 3. Publish event
+    this.eventBus.publish(new TourReservationCreatedEvent(newTourReservation));
+
+    return newTourReservation;
   }
 }

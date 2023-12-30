@@ -27,6 +27,7 @@ export class TourReservationFactory {
       startAtDate,
       cancellationDueDate,
       null,
+      null,
     );
 
     return tourReservation;

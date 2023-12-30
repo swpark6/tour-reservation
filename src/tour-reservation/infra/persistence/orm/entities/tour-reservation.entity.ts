@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, PrimaryColumn } from 'typeorm';
 
 @Entity('tour_reservations')
 export class TourReservationEntity {
@@ -19,4 +19,10 @@ export class TourReservationEntity {
 
   @Column()
   canceledAt: Date | null;
+
+  @Column()
+  approvedAt: Date | null;
+
+  @CreateDateColumn()
+  createdAt: Date;
 }

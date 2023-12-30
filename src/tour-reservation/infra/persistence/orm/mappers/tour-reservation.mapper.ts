@@ -7,8 +7,15 @@ export class TourReservationMapper {
       return null;
     }
 
-    const { id, tourId, userId, startAt, cancellationDueDate, canceledAt } =
-      entity;
+    const {
+      id,
+      tourId,
+      userId,
+      startAt,
+      cancellationDueDate,
+      canceledAt,
+      approvedAt,
+    } = entity;
 
     const domain = new TourReservation(
       id,
@@ -17,14 +24,22 @@ export class TourReservationMapper {
       startAt,
       cancellationDueDate,
       canceledAt,
+      approvedAt,
     );
 
     return domain;
   }
 
   static toPersistence(domain: TourReservation): TourReservationEntity {
-    const { id, tourId, userId, startAt, cancellationDueDate, canceledAt } =
-      domain;
+    const {
+      id,
+      tourId,
+      userId,
+      startAt,
+      cancellationDueDate,
+      canceledAt,
+      approvedAt,
+    } = domain;
 
     const entity = new TourReservationEntity();
 
@@ -34,6 +49,7 @@ export class TourReservationMapper {
     entity.startAt = startAt;
     entity.cancellationDueDate = cancellationDueDate;
     entity.canceledAt = canceledAt;
+    entity.approvedAt = approvedAt;
 
     return entity;
   }

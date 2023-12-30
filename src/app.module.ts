@@ -3,6 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TourReservationModule } from './tour-reservation/tour-reservation.module';
+import { CqrsModule } from '@nestjs/cqrs';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { TourReservationModule } from './tour-reservation/tour-reservation.modul
       synchronize: false,
       timezone: 'Z',
     }),
+    CqrsModule.forRoot(),
     TourReservationModule,
   ],
   controllers: [AppController],
