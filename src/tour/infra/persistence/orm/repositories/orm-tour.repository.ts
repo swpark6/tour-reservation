@@ -22,4 +22,12 @@ export class OrmTourRepository implements TourRepositoryPort {
 
     return TourMapper.toDomain(entity);
   }
+
+  async save(tour: Tour): Promise<Tour> {
+    const entity = TourMapper.toPersistence(tour);
+
+    const newEntity = await this.repository.save(entity);
+
+    return TourMapper.toDomain(newEntity);
+  }
 }

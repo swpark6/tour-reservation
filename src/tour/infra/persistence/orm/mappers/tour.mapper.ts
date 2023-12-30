@@ -24,7 +24,10 @@ export class TourMapper {
 
     const entity = new TourEntity();
     entity.id = id;
-    entity.holydays = holidays.map((holyday) => holyday.value).toString();
+    entity.holydays =
+      holidays.length === 0
+        ? null
+        : holidays.map((holyday) => holyday.value).toString();
 
     return entity;
   }
