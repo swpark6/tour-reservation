@@ -3,10 +3,12 @@ import { TourReservationCreatedEventHandler } from './application/event-hanlders
 import { ApproveTourReservationService } from './application/services/approve-tour-reservation.service';
 import { CancelTourReservationService } from './application/services/cancel-tour-reservation.service';
 import { CreateTourReservationService } from './application/services/create-tour-reseravtion.service';
+import { GetTourReservationService } from './application/services/get-tour-reservation.service';
 import { TourReservationFactory } from './domain/factories/tour-reservation.factory';
 import { OrmTourReservationModule } from './infra/persistence/orm/orm-tour-reservation.module';
 import { ApproveTourReservationController } from './presenters/http/approve-tour-reservation.controller';
 import { CancelTourReservationController } from './presenters/http/cancel-tour-reservation.controller';
+import { GetTourReservationController } from './presenters/http/get-tour-reservation.controller';
 import { TourReservationController } from './presenters/http/tour-reservation.controller';
 
 @Module({
@@ -15,6 +17,7 @@ import { TourReservationController } from './presenters/http/tour-reservation.co
     TourReservationController,
     CancelTourReservationController,
     ApproveTourReservationController,
+    GetTourReservationController,
   ],
   providers: [
     TourReservationFactory,
@@ -22,6 +25,7 @@ import { TourReservationController } from './presenters/http/tour-reservation.co
     CancelTourReservationService,
     ApproveTourReservationService,
     TourReservationCreatedEventHandler,
+    GetTourReservationService,
   ],
 })
 export class TourReservationModule {}
