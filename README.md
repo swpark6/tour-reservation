@@ -80,6 +80,16 @@
 - URL: GET /tour-reservations/{tourReservationId}
 - 조회에 실패하는 경우
   - 투어예약이 존재하지 않은 경우
+
+### 8. 예약 알림 전송
+
+- 예약내역을 고객에게 전송합니다. 현재 고객의 이메일정보가 없기 때문에 실 사용은 불가능합니다.
+
+- URL: POST /tour-reservations/{tourReservationId}/notice
+- 실패하는 경우
+  - 투어예약이 존재하지 않은 경우
+  - 이메일 인증정보가 유효하지 않은 경우
+  - 외부 이메일 서비스가 비정상인 경우
   
 ## 실행
 
@@ -90,6 +100,13 @@
 `docker-compose up -d`
 
 ### 어플리케이션 실행
+
+#### 환경변수
+
+(추가기능 - 이메일 알림 사용시)
+    1. SMTP_AUTH_USER: SMTP 인증에 사용할 유저 정보입니다.
+    2. SMTP_AUTH_PW: SMTP 인증에 사용할 유저 패스워드 입니다.
+    3. NO_REPLY_EMAIL_ADDRESS: 발송 이메일 입니다.
 
 ```text
 # development
