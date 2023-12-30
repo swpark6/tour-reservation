@@ -1,3 +1,4 @@
+import { AlreadyCanceledException } from './exceptions/already-canceled.exception';
 import { CanNotCancelException } from './exceptions/can-not-cancel.exception';
 
 export class TourReservation {
@@ -17,7 +18,27 @@ export class TourReservation {
 
     // 취소일
     public canceledAt: Date | null,
+
+    // 승인일
+    public approvedAt: Date | null,
   ) {}
+
+  /**
+   * 예약 승인
+   */
+  approve(now: Date) {
+    // 이미 취소된 경우
+    if (this.canceledAt) {
+      throw new AlreadyCanceledException(this);
+    }
+
+    // 이미 승인된 경우
+    if (this.approvedAt) {
+      return;
+    }
+
+    this.approvedAt = now;
+  }
 
   /**
    * 예약 취소
@@ -31,7 +52,7 @@ export class TourReservation {
     }
 
     if (!this.isCancelable(now)) {
-      throw new CanNotCancelException(now, this.cancellationDueDate);
+      throw new CanNotCancelException(now, this);
     }
 
     this.canceledAt = now;
