@@ -1,6 +1,16 @@
+import { HolydayVo } from './valud-object/holyday.vo';
+
 export class Tour {
+  holidays: HolydayVo[] = new Array<HolydayVo>();
+
   constructor(public readonly id: string) {}
 
+  /**
+   * 예약 가능 일정
+   * @param year
+   * @param month
+   * @returns
+   */
   availableSchedules(year: number, month: number) {
     const lastDateOfMonth = new Date(year, month, 0).getDate();
 
@@ -10,5 +20,13 @@ export class Tour {
     );
 
     return availableSchedules;
+  }
+
+  /**
+   * 휴일적용
+   * @param holidays
+   */
+  setHolydays(holidays: HolydayVo[]): void {
+    this.holidays = holidays;
   }
 }
