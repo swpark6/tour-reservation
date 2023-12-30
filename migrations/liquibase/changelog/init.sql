@@ -13,3 +13,11 @@ create table if not exists tour_reservations
     createdAt           timestamp default CURRENT_TIMESTAMP null,
     updatedAt           timestamp                           null
 );
+
+--changeset swpark:tours
+create table if not exists tours
+(
+    id varchar(36) not null
+        primary key
+);
+

@@ -57,6 +57,14 @@
   - 존재하지 않는 투어 예약인 경우
   - 이미 취소처리된 경우
 
+### 4. 예약 가능 일정 조회
+
+  투어의 예약가능 일정을 월 단위로 조회합니다.
+
+- URL: GET /tours/{tourId}/available-schedules
+- 조회에 실패하는 경우
+  - 투어가 존재하지 않은 경우
+
 ## 실행
 
 > docker has been installed

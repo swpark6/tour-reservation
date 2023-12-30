@@ -1,9 +1,11 @@
+import { RedisModule } from '@liaoliaots/nestjs-redis';
 import { Module } from '@nestjs/common';
+import { CqrsModule } from '@nestjs/cqrs';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TourReservationModule } from './tour-reservation/tour-reservation.module';
-import { CqrsModule } from '@nestjs/cqrs';
+import { TourModule } from './tour/tour.module';
 
 @Module({
   imports: [
@@ -19,7 +21,14 @@ import { CqrsModule } from '@nestjs/cqrs';
       timezone: 'Z',
     }),
     CqrsModule.forRoot(),
+    RedisModule.forRoot({
+      config: {
+        host: 'localhost',
+        port: 6379,
+      },
+    }),
     TourReservationModule,
+    TourModule,
   ],
   controllers: [AppController],
   providers: [AppService],
