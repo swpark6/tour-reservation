@@ -14,6 +14,9 @@ export class TourEntity {
   @Column()
   holydays: string | null;
 
+  @Column()
+  holydaysOfWeek: string | null;
+
   @CreateDateColumn()
   createdAt: Date;
 

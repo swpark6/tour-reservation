@@ -1,5 +1,6 @@
 import { Tour } from 'src/tour/domain/tour';
-import { HolydayVo } from 'src/tour/domain/valud-object/holyday.vo';
+import { HolydayOfWeekVo } from 'src/tour/domain/value-object/holyday-of-week.vo';
+import { HolydayVo } from 'src/tour/domain/value-object/holyday.vo';
 import { TourEntity } from '../entities/tour.entity';
 
 export class TourMapper {
@@ -8,19 +9,27 @@ export class TourMapper {
       return null;
     }
 
-    const { id, holydays } = entity;
+    const { id, holydays, holydaysOfWeek } = entity;
 
     const domain = new Tour(id);
     domain.holidays =
       typeof holydays === 'string'
         ? holydays.split(',').map((holyday) => new HolydayVo(holyday))
         : [];
+    domain.holydaysOfWeek =
+      typeof holydaysOfWeek === 'string'
+        ? holydaysOfWeek
+            .split(',')
+            .map(
+              (holydayOfWeek) => new HolydayOfWeekVo(parseInt(holydayOfWeek)),
+            )
+        : [];
 
     return domain;
   }
 
   static toPersistence(domain: Tour): TourEntity {
-    const { id, holidays } = domain;
+    const { id, holidays, holydaysOfWeek } = domain;
 
     const entity = new TourEntity();
     entity.id = id;
@@ -28,6 +37,10 @@ export class TourMapper {
       holidays.length === 0
         ? null
         : holidays.map((holyday) => holyday.value).toString();
+    entity.holydaysOfWeek =
+      holydaysOfWeek.length === 0
+        ? null
+        : holydaysOfWeek.map((holydayOfWeek) => holydayOfWeek.value).toString();
 
     return entity;
   }
