@@ -22,4 +22,12 @@ export class OrmTourReservationRepository
 
     return TourReservationMapper.toDomain(newEntity);
   }
+
+  async findOneById(tourReservationId: string): Promise<TourReservation> {
+    const entity = await this.repository.findOne({
+      where: { id: tourReservationId },
+    });
+
+    return TourReservationMapper.toDomain(entity);
+  }
 }

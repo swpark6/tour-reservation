@@ -22,10 +22,10 @@ export class TourReservationController {
   async create(
     @Body() dto: CreateTourReservationRequestDto,
   ): Promise<CreateTourReservationResponseDto> {
-    const { tourId, userId } = dto;
+    const { tourId, userId, startAt } = dto;
 
     const tourReservation = await this.createTourReservationService.create(
-      new CreateTourReservationCommand(tourId, userId),
+      new CreateTourReservationCommand(tourId, userId, startAt),
     );
 
     return plainToInstance(CreateTourReservationResponseDto, tourReservation);

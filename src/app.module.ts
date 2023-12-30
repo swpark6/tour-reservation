@@ -15,6 +15,7 @@ import { TourReservationModule } from './tour-reservation/tour-reservation.modul
       database: 'local',
       autoLoadEntities: true,
       synchronize: false,
+      timezone: 'Z',
     }),
     TourReservationModule,
   ],

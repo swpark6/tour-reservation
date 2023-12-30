@@ -15,7 +15,9 @@ services:
 
   # liquibase
   liquibase:
-    image: liquibase/liquibase:4.23
+    build:
+      context: ./migrations/liquibase
+      dockerfile: Dockerfile
     container_name: tour-liquibase-container
     volumes:
       - ./migrations/liquibase/changelog:/liquibase/changelog

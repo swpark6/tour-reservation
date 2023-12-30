@@ -18,10 +18,14 @@ export class CreateTourReservationService {
   async create(
     command: CreateTourReservationCommand,
   ): Promise<TourReservation> {
-    const { tourId, userId } = command;
+    const { tourId, userId, startAt } = command;
 
     // 1. Create new tour reservation
-    const tourReservation = this.tourReservationFactory.create(tourId, userId);
+    const tourReservation = this.tourReservationFactory.create(
+      tourId,
+      userId,
+      startAt,
+    );
 
     // 2. Save
     return this.tourReservationRepositoryPort.save(tourReservation);

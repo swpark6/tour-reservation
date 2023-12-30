@@ -3,21 +3,37 @@ import { TourReservationEntity } from '../entities/tour-reservation.entity';
 
 export class TourReservationMapper {
   static toDomain(entity: TourReservationEntity): TourReservation {
-    const { id, tourId, userId } = entity;
+    if (!entity) {
+      return null;
+    }
 
-    const domain = new TourReservation(id, tourId, userId);
+    const { id, tourId, userId, startAt, cancellationDueDate, canceledAt } =
+      entity;
+
+    const domain = new TourReservation(
+      id,
+      tourId,
+      userId,
+      startAt,
+      cancellationDueDate,
+      canceledAt,
+    );
 
     return domain;
   }
 
   static toPersistence(domain: TourReservation): TourReservationEntity {
-    const { id, tourId, userId } = domain;
+    const { id, tourId, userId, startAt, cancellationDueDate, canceledAt } =
+      domain;
 
     const entity = new TourReservationEntity();
 
     entity.id = id;
     entity.tourId = tourId;
     entity.userId = userId;
+    entity.startAt = startAt;
+    entity.cancellationDueDate = cancellationDueDate;
+    entity.canceledAt = canceledAt;
 
     return entity;
   }
