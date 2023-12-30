@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { TourHolydaysUpdatedEventHandler } from './application/event-handlers/tour-holydays-updated.event-handler';
 import { GetAvailableSchedulesService } from './application/services/get-available-schedules.service';
 import { GetTourService } from './application/services/get-tour.service';
 import { SetHolydaysService } from './application/services/set-holydays.service';
@@ -14,6 +15,11 @@ import { GetTourController } from './presenters/http/tour.controller';
     SetHolydaysController,
     GetTourController,
   ],
-  providers: [GetAvailableSchedulesService, SetHolydaysService, GetTourService],
+  providers: [
+    GetAvailableSchedulesService,
+    SetHolydaysService,
+    GetTourService,
+    TourHolydaysUpdatedEventHandler,
+  ],
 })
 export class TourModule {}
