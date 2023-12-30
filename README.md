@@ -31,7 +31,20 @@
 
 ## API
 
-==TODO==
+### 1. 투어 예약 신청
+
+투어예약을 신청합니다.
+
+- URL: POST /tour-reservations
+
+### 2. 투어 예약 취소
+
+투어 예약을 취소합니다.
+
+- URL: DELETE /tour-reservations/{tourReservationId}
+- 투어예약취소에 실패하는 경우
+  - 존재하지 않는 투어 예약인 경우
+  - 취소 마감일(여행 시작 3일전)을 지나서 취소신청을 하는 경우
 
 ## 실행
 
