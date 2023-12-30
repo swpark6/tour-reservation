@@ -5,7 +5,7 @@ import { TourReservation } from '../tour-reservation';
 
 @Injectable()
 export class TourReservationFactory {
-  private static CANCELLATION_PERIOD = 3; // 3days
+  private static readonly CANCELLATION_PERIOD = 3; // 3days
 
   create(tourId: string, userId: string, startAt: string) {
     const tourReservationId = randomUUID();
