@@ -24,7 +24,7 @@ export class CancelTourReservationController {
   ) {}
 
   @ApiCreatedResponse({ type: CreateTourReservationResponseDto })
-  @ApiNotFoundResponse({ description: '투어 예약이 존재하지 않는 경우' })
+  @ApiNotFoundResponse({ description: '투어 예약이 존재하지 않은 경우' })
   @ApiConflictResponse({ description: '취소 마감일이 지난 경우' })
   @ApiOperation({
     operationId: 'cancel-tour-reservations',
