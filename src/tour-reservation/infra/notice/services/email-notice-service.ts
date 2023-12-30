@@ -30,7 +30,7 @@ export class EmailNoticeService
         from: this.senderEmailAddress,
         to: userEmail,
         subject: `[투어 예약 확인] 투어가 ${tourReservation.startAt}에 예약되었습니다.`,
-        text: `예약번호: ${tourReservation.id}`,
+        text: `고객정보: ${tourReservation.userId}, 예약번호: ${tourReservation.id}, 투어: ${tourReservation.tourId} 취소기한: ${tourReservation.canceledAt}, 예약승인일자: ${tourReservation.approvedAt}, 취소일: ${tourReservation.canceledAt}`,
       });
 
       return Promise.resolve(true);
