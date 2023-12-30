@@ -23,6 +23,8 @@
 
 ## API
 
+> Swagger API doc: <http://localhost:3000/api>
+
 ### 1. 투어 예약 신청
 
 투어예약을 신청합니다.
@@ -104,9 +106,12 @@
 #### 환경변수
 
 (추가기능 - 이메일 알림 사용시)
+
     1. SMTP_AUTH_USER: SMTP 인증에 사용할 유저 정보입니다.
     2. SMTP_AUTH_PW: SMTP 인증에 사용할 유저 패스워드 입니다.
     3. NO_REPLY_EMAIL_ADDRESS: 발송 이메일 입니다.
+
+#### 실행
 
 ```text
 # development
@@ -118,3 +123,5 @@ $ pnpm run start:dev
 # production mode
 $ pnpm run start:prod
 ```
+
+실행 후 API 확인은 Swagger 에서 가능합니다. <http://localhost:3000/api>
