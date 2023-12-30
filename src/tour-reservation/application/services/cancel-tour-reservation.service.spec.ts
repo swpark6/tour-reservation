@@ -73,6 +73,7 @@ describe('CancelTourReservationService Spec', () => {
         startAt: new Date('2024-01-03T10:00:00.000Z'),
         cancellationDueDate: new Date('2024-01-01T10:00:00.000Z'),
         canceledAt: new Date('2024-01-01T09:59:59.999Z'),
+        approvedAt: null,
       });
     });
 

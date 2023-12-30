@@ -26,6 +26,7 @@ describe('TourReservationFactory Spec', () => {
           startAt: new Date('2024-01-02T15:00:00.000Z'), // 24.01.03 KST
           cancellationDueDate: new Date('2023-12-31T15:00:00.000Z'), // 24.01.01 KST
           canceledAt: null,
+          approvedAt: null,
         });
       });
 
@@ -46,6 +47,7 @@ describe('TourReservationFactory Spec', () => {
           startAt: new Date('2024-01-02T15:00:00.000Z'), //  24.01.03 KST
           cancellationDueDate: new Date('2023-12-31T15:00:00.000Z'), //  24.01.01 KST
           canceledAt: null,
+          approvedAt: null,
         });
       });
 
@@ -66,6 +68,7 @@ describe('TourReservationFactory Spec', () => {
           startAt: new Date('2024-01-03T00:00:00.000-10:00'), // 24.01.03 HST
           cancellationDueDate: new Date('2024-01-01T00:00:00.000-10:00'), // 24.01.01 HST
           canceledAt: null,
+          approvedAt: null,
         });
       });
 
@@ -86,6 +89,7 @@ describe('TourReservationFactory Spec', () => {
           startAt: new Date('2024-01-03T00:00:00.000-10:00'), // 24.01.03 HST
           cancellationDueDate: new Date('2024-01-01T00:00:00.000-10:00'), // 24.01.01 HST
           canceledAt: null,
+          approvedAt: null,
         });
       });
     });
