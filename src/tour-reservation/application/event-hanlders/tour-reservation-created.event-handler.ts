@@ -1,6 +1,7 @@
 import { Logger } from '@nestjs/common';
 import { EventsHandler, IEventHandler } from '@nestjs/cqrs';
 import { TourReservationCreatedEvent } from 'src/tour-reservation/domain/evnets/tour-reservation-created.event';
+import { ApproveTourReservationCommand } from '../commands/approve-tour-reservation.command';
 import { TourReservationRepositoryPort } from '../ports/tour-reservation.repository.port';
 import { ApproveTourReservationService } from '../services/approve-tour-reservation.service';
 
@@ -47,7 +48,9 @@ export class TourReservationCreatedEventHandler
     }
 
     // 3. Approve (if the count less than or equals to MAX_AUTO_APPROVAL_COUNT)
-    await this.approveTourReservationService.approve(tourReservation.id);
+    await this.approveTourReservationService.approve(
+      new ApproveTourReservationCommand(tourReservation.id),
+    );
 
     this.logger.debug(
       `투어예약(id=${tourReservation.id}이 자동승인 되었습니다.|${tourReservation.startAt} 일자의 기존 투어예약개수: ${tourReservationCount}`,

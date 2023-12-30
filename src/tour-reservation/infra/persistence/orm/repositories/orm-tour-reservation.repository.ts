@@ -37,7 +37,7 @@ export class OrmTourReservationRepository
     return this.repository.count({
       where: {
         tourId,
-        startAt: Between(startAt, new Date(startAt.getTime() + h24)),
+        startAt: Between(startAt, new Date(startAt.getTime() + h24 - 1)), // Between: startAt <= :startAt <= startAt+24h-1ms
         approvedAt: Not(IsNull()),
         canceledAt: IsNull(),
       },

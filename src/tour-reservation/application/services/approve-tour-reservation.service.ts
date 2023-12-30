@@ -1,5 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { TourReservation } from 'src/tour-reservation/domain/tour-reservation';
+import { ApproveTourReservationCommand } from '../commands/approve-tour-reservation.command';
 import { TourReservationRepositoryPort } from '../ports/tour-reservation.repository.port';
 
 @Injectable()
@@ -13,7 +14,11 @@ export class ApproveTourReservationService {
    * @param tourReservationId
    * @returns
    */
-  async approve(tourReservationId: string): Promise<TourReservation> {
+  async approve(
+    command: ApproveTourReservationCommand,
+  ): Promise<TourReservation> {
+    const { tourReservationId } = command;
+
     const tourReservation =
       await this.tourReservationRepository.findOneById(tourReservationId);
 
