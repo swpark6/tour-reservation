@@ -72,7 +72,15 @@
 
 - URL: GET /tours/{tourId}
 - 조회에 실패하는 경우
-- 투어가 존재하지 않은 경우
+  - 투어가 존재하지 않은 경우
+
+### 7. 고객 예약 확인
+
+- 예약을 확인합니다.
+
+- URL: GET /tour-reservations/{tourReservationId}
+- 조회에 실패하는 경우
+  - 투어예약이 존재하지 않은 경우
   
 ## 실행
 
