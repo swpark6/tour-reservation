@@ -30,6 +30,8 @@ export class CreateTourReservationService {
       startAt,
     );
 
+    // TODO: Validate available schedule by holyday
+
     // 2. Save
     const newTourReservation =
       await this.tourReservationRepositoryPort.save(tourReservation);

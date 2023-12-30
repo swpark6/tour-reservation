@@ -14,6 +14,10 @@ export class OrmTourRepository implements TourRepositoryPort {
   ) {}
 
   async findOneById(tourId: string): Promise<Tour> {
+    if (!tourId) {
+      return null;
+    }
+
     const entity = await this.repository.findOne({
       where: {
         id: tourId,

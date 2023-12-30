@@ -24,6 +24,10 @@ export class OrmTourReservationRepository
   }
 
   async findOneById(tourReservationId: string): Promise<TourReservation> {
+    if (!tourReservationId) {
+      return null;
+    }
+
     const entity = await this.repository.findOne({
       where: { id: tourReservationId },
     });
